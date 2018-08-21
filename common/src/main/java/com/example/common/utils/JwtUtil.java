@@ -102,6 +102,13 @@ public class JwtUtil {
         }
         return "";
     }
+    public static String getUid(DecodedJWT decodedJWT){
+        if(decodedJWT!=null){
+            Map<String, Claim> c = decodedJWT.getClaims();
+            return c.get("uid").asString();
+        }
+        return "";
+    }
     public static String getUsername(DecodedJWT decodedJWT) {
         if(decodedJWT!=null){
             return decodedJWT.getSubject();
