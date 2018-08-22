@@ -24,3 +24,12 @@
 /nbdist/
 /.nb-gradle/
 /.idea/
+/user/mvnw
+/user/mvnw.cmd
+/user/.mvn/
+/common/.mvn/
+/common/mvnw.cmd
+/common/mvnw
+/auth/.mvn/
+/auth/mvnw.cmd
+/auth/mvnw
