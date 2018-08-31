@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+
+        .load-container{background-color: white;text-align:center;width: 203px;height: 75px;line-height:  75px;padding: 0px;border-radius: 7px;position: absolute;top:40%;left:45%;z-index: 105;}
+        .load-container p{display:inline-block;position:relative;top:-36px;padding-left:19px;font-size:14px;color: black;}
+        .load-container .loader{display:inline-block;font-size:30px;text-indent:-9999em;overflow:hidden;width:1em;height:1em;border-radius:50%;margin:0.8em auto;position:relative;-webkit-animation:load 1.5s infinite ease;animation:load 1.5s infinite ease;}
+        @-webkit-keyframes load{
+            0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);box-shadow:-0.11em -0.83em 0 -0.4em #d4eaf4,-0.11em -0.83em 0 -0.42em #d4eaf4,-0.11em -0.83em 0 -0.44em #d4eaf4,-0.11em -0.83em 0 -0.46em #d4eaf4,-0.11em -0.83em 0 -0.477em #d4eaf4;}
+            5%,
+            95%{box-shadow:-0.11em -0.83em 0 -0.4em #a4dbf4,-0.11em -0.83em 0 -0.42em #a4dbf4,-0.11em -0.83em 0 -0.44em #a4dbf4,-0.11em -0.83em 0 -0.46em #a4dbf4,-0.11em -0.83em 0 -0.477em #a4dbf4;}
+            30%{box-shadow:-0.11em -0.83em 0 -0.4em #5bc5f4,-0.51em -0.66em 0 -0.42em #5bc5f4,-0.75em -0.36em 0 -0.44em #5bc5f4,-0.83em -0.03em 0 -0.46em #5bc5f4,-0.81em 0.21em 0 -0.477em #5bc5f4;}
+            55%{box-shadow:-0.11em -0.83em 0 -0.4em #2ab6f4,-0.29em -0.78em 0 -0.42em #2ab6f4,-0.43em -0.72em 0 -0.44em #2ab6f4,-0.52em -0.65em 0 -0.46em #2ab6f4,-0.57em -0.61em 0 -0.477em #2ab6f4;}
+            100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);box-shadow:-0.11em -0.83em 0 -0.4em #0fa4f6,-0.11em -0.83em 0 -0.42em #0fa4f6,-0.11em -0.83em 0 -0.44em #0fa4f6,-0.11em -0.83em 0 -0.46em #0fa4f6,-0.11em -0.83em 0 -0.477em #0fa4f6;}
+        }
+        @keyframes load{
+            0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);box-shadow:-0.11em -0.83em 0 -0.4em #d4eaf4,-0.11em -0.83em 0 -0.42em #d4eaf4,-0.11em -0.83em 0 -0.44em #d4eaf4,-0.11em -0.83em 0 -0.46em #d4eaf4,-0.11em -0.83em 0 -0.477em #d4eaf4;}
+            5%,
+            95%{box-shadow:-0.11em -0.83em 0 -0.4em #000,-0.11em -0.83em 0 -0.42em #000,-0.11em -0.83em 0 -0.44em #000,-0.11em -0.83em 0 -0.46em #000,-0.11em -0.83em 0 -0.477em #000;}
+            30%{box-shadow:-0.11em -0.83em 0 -0.4em #000,-0.51em -0.66em 0 -0.42em #000,-0.75em -0.36em 0 -0.44em #000,-0.83em -0.03em 0 -0.46em #000,-0.81em 0.21em 0 -0.477em #000;}
+            55%{box-shadow:-0.11em -0.83em 0 -0.4em #000,-0.29em -0.78em 0 -0.42em #000,-0.43em -0.72em 0 -0.44em #000,-0.52em -0.65em 0 -0.46em #000,-0.57em -0.61em 0 -0.477em #000;}
+            100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);box-shadow:-0.11em -0.83em 0 -0.4em #000,-0.11em -0.83em 0 -0.42em #000,-0.11em -0.83em 0 -0.44em #000,-0.11em -0.83em 0 -0.46em #000,-0.11em -0.83em 0 -0.477em #000;}
+        }
+
+        .lightbox{width:100%;z-index:101;height:100%;background-color: black;opacity: 0.25;position:absolute;top:0px;left:0px;}
+    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a href="http://www.baidu.com">asdfafasgfahgasdhhhhhh</a>
+    <div class="tanchuang_wrap" id="tanchuang_wrap">
+        <div class="lightbox" onClick="closeDiv('tanchuang_wrap')"></div>
+        <div class="tanchuang_neirong">
+            <div class="load-container">
+                <div class="loader"></div>
+                <p>加载中请稍后...</p>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+<script>
+    function closeDiv(divId){
+        document.getElementById(divId).style.display = 'none';
+    }
+    function displayDiv(divId){
+        document.getElementById(divId).style.display = 'block';
+    }
+</script>
+</html>
