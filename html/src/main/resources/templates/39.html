@@ -24,31 +24,44 @@
         }
 
         .lightbox{width:100%;z-index:101;height:100%;background-color: black;opacity: 0.25;position:absolute;top:0px;left:0px;}
+        .load-container .close {background: white;color: black;border-radius: 12px;line-height: 14px;text-align:center;height: 14px;width: 14px;font-size: 8px;padding: 1px;top: -7px;right: -7px;position: absolute;cursor: pointer}
+        .load-container .close::before {content: "\2716";}
     </style>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-    <a href="http://www.baidu.com">asdfafasgfahgasdhhhhhh</a>
-    <div class="tanchuang_wrap" id="tanchuang_wrap">
-        <div class="lightbox" onClick="closeDiv('tanchuang_wrap')"></div>
-        <div class="tanchuang_neirong">
-            <div class="load-container">
-                <div class="loader"></div>
-                <p>加载中请稍后...</p>
-            </div>
+<a href="http://www.baidu.com">asdfafasgfahgasdhhhhhh</a>
+<div class="tanchuang_wrap">
+    <div class="lightbox"></div>
+    <div class="tanchuang_neirong">
+        <div class="load-container">
+            <div class="loader"></div>
+            <p>加载中请稍后...</p>
+            <span class="close" onClick="closeDiv()"></span>
         </div>
     </div>
+</div>
 
 
 </body>
 
 <script>
-    function closeDiv(divId){
-        document.getElementById(divId).style.display = 'none';
+    function closeDiv(){
+        //document.getElementById(divId).style.display = 'none';
+        var elements = document.getElementsByClassName('tanchuang_wrap');
+        for(var x=0; x<elements.length; x++){
+            var element = elements[x];
+            element.style.display = 'none';
+        }
     }
     function displayDiv(divId){
-        document.getElementById(divId).style.display = 'block';
+        // document.getElementById(divId).style.display = 'block';
+        var elements = document.getElementsByClassName('tanchuang_wrap');
+        for(var x=0; x<elements.length; x++){
+            var element = elements[x];
+            element.style.display = 'block';
+        }
     }
 </script>
 </html>
