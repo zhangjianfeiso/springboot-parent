@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Slf4j
-public class GenerateAccessToken {
+public class AccessTokenUtil {
 
     private static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={}&secret={}";
 
@@ -43,7 +43,7 @@ public class GenerateAccessToken {
             if(StrUtil.isNotBlank(result)){
                 AccessToken accessToken = JSONUtil.toBean(result, AccessToken.class);
                 if(null != accessToken && StrUtil.isNotBlank(accessToken.getAccess_token())){
-                    redisUtil.set(Constant.ACCESS_TOKEN,accessToken,7200);
+                    redisUtil.set(Constant.ACCESS_TOKEN,accessToken,accessToken.getExpires_in());
                 }
                 log.info("获取到的access_token:{}",accessToken);
                 return accessToken;

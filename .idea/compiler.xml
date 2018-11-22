@@ -8,15 +8,18 @@
         <outputRelativeToContentRoot value="true" />
         <module name="auth" />
         <module name="common" />
-        <module name="demo" />
+        <module name="html" />
+        <module name="user" />
+        <module name="wechat" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="auth" target="1.8" />
       <module name="common" target="1.8" />
-      <module name="dao" target="1.8" />
-      <module name="demo" target="1.8" />
+      <module name="html" target="1.8" />
       <module name="springboot-parent" target="1.8" />
+      <module name="user" target="1.8" />
+      <module name="wechat" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

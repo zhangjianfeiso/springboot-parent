@@ -29,7 +29,6 @@ public class RedisAutoConfiguration {
     }
 
     @Bean
-
     @ConditionalOnMissingBean
     public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory redisConnectionFactory) throws Exception {
         StringRedisTemplate template = new StringRedisTemplate();
