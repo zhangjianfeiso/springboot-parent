@@ -39,8 +39,8 @@ public class WechatApplicationTests {
 	public void get(){
 		BatchgetUserInfoRes batchgetRes = new BatchgetUserInfoRes();
 		List<BatchgetUserInfoRes.Data> data = new ArrayList<>();
-		data.add(new BatchgetUserInfoRes.Data("ogk2v0ejj-V9o-y8wp4PutGy7UeI",""));
-		data.add(new BatchgetUserInfoRes.Data("ogk2v0bl7YGxV9zSf4eYFquPIcs0",""));
+		data.add(new BatchgetUserInfoRes.Data("ogk2v0ejj-V9o-y8wp4PutGy7UeI"));
+		data.add(new BatchgetUserInfoRes.Data("ogk2v0bl7YGxV9zSf4eYFquPIcs0"));
 		batchgetRes.setUser_list(data);
 		BatchgetUserInfo batchgetUserInfo = userApiService.getBatchgetUserInfo(batchgetRes);
 		System.out.println(batchgetUserInfo);

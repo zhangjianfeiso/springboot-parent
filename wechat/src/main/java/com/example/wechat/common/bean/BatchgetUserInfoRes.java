@@ -13,6 +13,8 @@ public class BatchgetUserInfoRes {
 
     private List<Data> user_list;
 
+
+
     @lombok.Data
     public static class Data{
         private String openid;
@@ -20,10 +22,13 @@ public class BatchgetUserInfoRes {
 
         public Data() {
         }
-
+        public Data(String openid) {
+            this.openid = openid;
+        }
         public Data(String openid, String lang) {
             this.openid = openid;
             this.lang = lang;
         }
     }
+
 }
