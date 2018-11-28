@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/wechat")
 @CrossOrigin
-public class WechatConfigController {
+public class JsSdkConfigController {
 
     @Autowired
     private AccessTokenUtil accessTokenUtil;

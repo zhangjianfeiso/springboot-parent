@@ -16,6 +16,6 @@ public class WechatProperties {
     private String ip;
     private String appid;
     private String secret;
-
+    private String token;
 
 }

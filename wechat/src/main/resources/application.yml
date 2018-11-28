@@ -5,6 +5,7 @@ wechat:
   ip: http://zhangjf.iask.in:11710
   appid: wx06668e4d74c358a7
   secret: 4b58a9aac888b22c0c23d1e64599fb60
+  token: xxxxxxxxx
 
 swagger:
   scan: com.example.wechat.modules
