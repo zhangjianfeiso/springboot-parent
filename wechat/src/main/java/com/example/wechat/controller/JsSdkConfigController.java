@@ -29,7 +29,7 @@ public class JsSdkConfigController {
     @PostMapping("/config")
     @ResponseBody
     public Response config(String url){
-        url = "zhangjf.iask.in";
+        //url = "zhangjf.iask.in";
         AccessToken accessToken = accessTokenUtil.getAccessToken();
         JsapiTicket jsapiTicket = jsapiTicketUtil.getJsapiTicket(accessToken.getAccess_token());
         return Response.ok(Sign.sign(jsapiTicket.getTicket(),wechatProperties.getAppid(),url));
