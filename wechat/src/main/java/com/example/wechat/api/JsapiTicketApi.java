@@ -7,6 +7,7 @@ import com.example.wechat.common.bean.Constant;
 import com.example.wechat.common.bean.JsapiTicket;
 import com.example.wechat.common.bean.RequestCode;
 import com.example.wechat.common.utils.RedisUtil;
+import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class JsapiTicketApi {
     private RedisUtil redisUtil;
 
 
-    public JsapiTicket getJsapiTicket(String accessToken){
+    public synchronized JsapiTicket getJsapiTicket(String accessToken){
         JsapiTicket jsapiTicket = (JsapiTicket) redisUtil.get(Constant.JSAPI_TICKET);
         if(null != jsapiTicket){
             return jsapiTicket;
