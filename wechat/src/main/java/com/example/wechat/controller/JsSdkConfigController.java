@@ -1,11 +1,11 @@
 package com.example.wechat.controller;
 
 import com.example.common.bean.Response;
+import com.example.wechat.api.JsapiTicketApi;
 import com.example.wechat.common.bean.AccessToken;
 import com.example.wechat.common.bean.JsapiTicket;
 import com.example.wechat.common.bean.WechatProperties;
 import com.example.wechat.common.utils.AccessTokenUtil;
-import com.example.wechat.common.utils.JsapiTicketUtil;
 import com.example.wechat.common.utils.Sign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,7 @@ public class JsSdkConfigController {
     @Autowired
     private AccessTokenUtil accessTokenUtil;
     @Autowired
-    private JsapiTicketUtil jsapiTicketUtil;
+    private JsapiTicketApi jsapiTicketApi;
     @Autowired
     private WechatProperties wechatProperties;
 
@@ -31,7 +31,7 @@ public class JsSdkConfigController {
     public Response config(String url){
         //url = "zhangjf.iask.in";
         AccessToken accessToken = accessTokenUtil.getAccessToken();
-        JsapiTicket jsapiTicket = jsapiTicketUtil.getJsapiTicket(accessToken.getAccess_token());
-        return Response.ok(Sign.sign(jsapiTicket.getTicket(),wechatProperties.getAppid(),url));
+        JsapiTicket jsapiTicket = jsapiTicketApi.getJsapiTicket(accessToken.getAccess_token());
+        return Response.ok(Sign.wxConfigSign(jsapiTicket.getTicket(),wechatProperties.getAppid(),url));
     }
 }

@@ -1,10 +1,9 @@
 package com.example.wechat.service.impl;
 
-import com.example.wechat.api.service.UserApiService;
+import com.example.wechat.api.WechatUserApi;
 import com.example.wechat.common.bean.ArticleItem;
 import com.example.wechat.common.bean.UserInfo;
 import com.example.wechat.common.bean.WechatContant;
-import com.example.wechat.common.utils.RedisUtil;
 import com.example.wechat.common.utils.WechatUtil;
 import com.example.wechat.service.WechatService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ import java.util.Map;
 public class WechatServiceImpl implements WechatService {
 
     @Autowired
-    private UserApiService userApiService;
+    private WechatUserApi wechatUserApi;
 
 
     public String processRequest(HttpServletRequest request) {
@@ -54,15 +53,15 @@ public class WechatServiceImpl implements WechatService {
                     item.setDescription("一张照片");
                     item.setPicUrl("http://changhaiwx.pagekite.me/images/me.jpg");
                     item.setUrl("http://changhaiwx.pagekite.me/page/index");
-                    items.add(item);
-
+                    items.add(item);*/
+/*
                     item = new ArticleItem();
                     item.setTitle("小游戏2048");
                     item.setDescription("小游戏2048");
                     item.setPicUrl("http://changhaiwx.pagekite.me/images/2048.jpg");
                     item.setUrl("http://changhaiwx.pagekite.me/page/game2048");
-                    items.add(item);
-*/
+                    items.add(item);*/
+
                     item = new ArticleItem();
                     item.setTitle("百度");
                     item.setDescription("百度一下");
@@ -72,7 +71,7 @@ public class WechatServiceImpl implements WechatService {
 
                     respXml = WechatUtil.sendArticleMsg(requestMap, items);
                 }else if("我的信息".equals(mes)){
-                    UserInfo userInfo = userApiService.getWechatUserInfo(requestMap.get(WechatContant.FromUserName));
+                    UserInfo userInfo = wechatUserApi.getWechatUserInfo(requestMap.get(WechatContant.FromUserName));
                     System.out.println(userInfo.toString());
                     String nickname = userInfo.getNickname();
                     String city = userInfo.getCity();
@@ -97,8 +96,39 @@ public class WechatServiceImpl implements WechatService {
             }
             // 语音消息
             else if (msgType.equalsIgnoreCase(WechatContant.REQ_MESSAGE_TYPE_VOICE)) {
-                respContent = "您发送的是语音消息！";
-                respXml = WechatUtil.sendTextMsg(requestMap, respContent);
+                //respContent = "您发送的是语音消息！";
+                //respXml = WechatUtil.sendTextMsg(requestMap, respContent);
+
+                List<ArticleItem> items = new ArrayList<>();
+                ArticleItem item = new ArticleItem();
+                item.setTitle("照片墙");
+                item.setDescription("阿狸照片墙");
+                item.setPicUrl("http://changhaiwx.pagekite.me/photo-wall/a/iali11.jpg");
+                item.setUrl("http://changhaiwx.pagekite.me/page/photowall");
+                items.add(item);
+
+                item = new ArticleItem();
+                item.setTitle("哈哈");
+                item.setDescription("一张照片");
+                item.setPicUrl("http://changhaiwx.pagekite.me/images/me.jpg");
+                item.setUrl("http://changhaiwx.pagekite.me/page/index");
+                items.add(item);
+
+                item = new ArticleItem();
+                item.setTitle("小游戏2048");
+                item.setDescription("小游戏2048");
+                item.setPicUrl("http://changhaiwx.pagekite.me/images/2048.jpg");
+                item.setUrl("http://changhaiwx.pagekite.me/page/game2048");
+                items.add(item);
+
+                item = new ArticleItem();
+                item.setTitle("百度");
+                item.setDescription("百度一下");
+                item.setPicUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505100912368&di=69c2ba796aa2afd9a4608e213bf695fb&imgtype=0&src=http%3A%2F%2Ftx.haiqq.com%2Fuploads%2Fallimg%2F170510%2F0634355517-9.jpg");
+                item.setUrl("http://www.baidu.com");
+                items.add(item);
+
+                respXml = WechatUtil.sendArticleMsg(requestMap, items);
             }
             // 视频消息
             else if (msgType.equalsIgnoreCase(WechatContant.REQ_MESSAGE_TYPE_VIDEO)) {
@@ -122,7 +152,8 @@ public class WechatServiceImpl implements WechatService {
                 // 关注
                 if (eventType.equalsIgnoreCase(WechatContant.EVENT_TYPE_SUBSCRIBE)) {
                     respContent = "谢谢您的关注！";
-                    respXml = WechatUtil.sendTextMsg(requestMap, respContent);
+                    //respXml = WechatUtil.sendTextMsg(requestMap, respContent);
+                    respXml = "<xml><Articles><item><Description><![CDATA[阿狸照片墙]]></Description><Title><![CDATA[照片墙]]></Title><PicUrl><![CDATA[http://changhaiwx.pagekite.me/photo-wall/a/iali11.jpg]]></PicUrl><Url><![CDATA[http://changhaiwx.pagekite.me/page/photowall]]></Url></item><item><Description><![CDATA[一张照片]]></Description><Title><![CDATA[哈哈]]></Title><PicUrl><![CDATA[http://changhaiwx.pagekite.me/images/me.jpg]]></PicUrl><Url><![CDATA[http://changhaiwx.pagekite.me/page/index]]></Url></item><item><Description><![CDATA[小游戏2048]]></Description><Title><![CDATA[小游戏2048]]></Title><PicUrl><![CDATA[http://changhaiwx.pagekite.me/images/2048.jpg]]></PicUrl><Url><![CDATA[http://changhaiwx.pagekite.me/page/game2048]]></Url></item><item><Description><![CDATA[百度一下]]></Description><Title><![CDATA[百度]]></Title><PicUrl><![CDATA[https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1505100912368&di=69c2ba796aa2afd9a4608e213bf695fb&imgtype=0&src=http%3A%2F%2Ftx.haiqq.com%2Fuploads%2Fallimg%2F170510%2F0634355517-9.jpg]]></PicUrl><Url><![CDATA[http://www.baidu.com]]></Url></item></Articles><CreateTime><![CDATA[1543475323815]]></CreateTime><ArticleCount><![CDATA[4]]></ArticleCount><ToUserName><![CDATA[ogk2v0bl7YGxV9zSf4eYFquPIcs0]]></ToUserName><FromUserName><![CDATA[gh_8bd0f24e58aa]]></FromUserName><MsgType><![CDATA[news]]></MsgType></xml>";
                 }
                 // 取消关注
                 else if (eventType.equalsIgnoreCase(WechatContant.EVENT_TYPE_UNSUBSCRIBE)) {

@@ -1,4 +1,4 @@
-package com.example.wechat.common.utils;
+package com.example.wechat.api;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpUtil;
@@ -6,14 +6,20 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.wechat.common.bean.Constant;
 import com.example.wechat.common.bean.JsapiTicket;
 import com.example.wechat.common.bean.RequestCode;
+import com.example.wechat.common.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * jssdk  api
+ * @author zhangjf
+ * @Date 2018/11/30  11:14
+ */
 @Component
 @Slf4j
-public class JsapiTicketUtil {
+public class JsapiTicketApi {
 
     private static final String JSAPI_TICKET_URL = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token={}&type=jsapi";
     @Autowired
