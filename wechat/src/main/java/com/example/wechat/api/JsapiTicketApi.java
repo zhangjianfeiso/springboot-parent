@@ -40,7 +40,7 @@ public class JsapiTicketApi {
             String result = HttpUtil.get(StrUtil.format(JSAPI_TICKET_URL, accessToken));
             if(StringUtils.isNotBlank(result)){
                 JsapiTicket jsapiTicket = JSONObject.parseObject(result, JsapiTicket.class);
-                if(null != jsapiTicket && jsapiTicket.getErrcode() == RequestCode.请求成功.getCode()){
+                if(null != jsapiTicket && jsapiTicket.getErrcode() == RequestCode.SUCCESS.getCode()){
                     redisUtil.set(Constant.JSAPI_TICKET,jsapiTicket,jsapiTicket.getExpires_in());
                     return jsapiTicket;
                 }

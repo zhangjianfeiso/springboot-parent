@@ -87,7 +87,7 @@ public class AuthorizeApi {
         try {
             String result = HttpUtil.get(StrUtil.format(AUTH_CHECK_URL, accessToken, openid));
             BaseRequest baseRequest = JSONObject.parseObject(result, BaseRequest.class);
-            return RequestCode.请求成功.getCode().equals(baseRequest.getErrcode());
+            return RequestCode.SUCCESS.getCode().equals(baseRequest.getErrcode());
         }catch (Exception e){
             e.printStackTrace();
             log.error("验证授权凭证失败！{}",e.getMessage());
