@@ -5,6 +5,7 @@ import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.thread.ThreadUtil;
 import org.apache.catalina.connector.ClientAbortException;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.ServletOutputStream;
@@ -18,13 +19,15 @@ import java.io.*;
  */
 @Controller
 @RequestMapping("/img")
+@CrossOrigin
 public class TestImageController {
 
     @RequestMapping("/download")
     public void download(HttpServletRequest request, HttpServletResponse response) {
-        ThreadUtil.sleep(3000);
+        ThreadUtil.sleep(2000);
 
-        File file = new File("C:\\Users\\DELL\\Desktop\\images\\8575840_114126243000_2.jpg");
+        File file = new File("C:\\Users\\ZHANG_JIAN_FEI\\Desktop\\timg.jpg");
+        //File file = new File("C:\\Users\\DELL\\Desktop\\images\\8575840_114126243000_2.jpg");
         if (FileUtil.isFile(file) && FileUtil.exist(file)) {
             response.setHeader("content-type", "application/octet-stream");
             response.setContentType("image/jpeg");

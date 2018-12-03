@@ -58,16 +58,7 @@ public class Sign {
         // 注意这里参数名必须全部小写，且必须有序
         string1 = "qr_config_ticket=" + QR_CONFIG_TICKET + "&noncestr=" + nonce_str
                 + "&timestamp=" + timestamp + "&expires_in=" + EXPIRES_IN;
-        try {
-            MessageDigest crypt = MessageDigest.getInstance("SHA-1");
-            crypt.reset();
-            crypt.update(string1.getBytes("UTF-8"));
-            signature = byteToHex(crypt.digest());
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        signature = signature(string1, signature);
         return signature;
     }
 
@@ -81,6 +72,16 @@ public class Sign {
         // 注意这里参数名必须全部小写，且必须有序
         string1 = "jsapi_ticket=" + jsapi_ticket + "&noncestr=" + nonce_str
                 + "&timestamp=" + timestamp + "&url=" + url;
+        signature = signature(string1, signature);
+        //注意这里 要加上自己的appId
+        vo.setAppId(appId);
+        vo.setNonceStr(nonce_str);
+        vo.setSignature(signature);
+        vo.setTimestamp(timestamp);
+        return vo;
+    }
+
+    private static String signature(String string1, String signature) {
         try {
             MessageDigest crypt = MessageDigest.getInstance("SHA-1");
             crypt.reset();
@@ -91,12 +92,7 @@ public class Sign {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        //注意这里 要加上自己的appId
-        vo.setAppId(appId);
-        vo.setNonceStr(nonce_str);
-        vo.setSignature(signature);
-        vo.setTimestamp(timestamp);
-        return vo;
+        return signature;
     }
 
     private static String byteToHex(final byte[] hash) {

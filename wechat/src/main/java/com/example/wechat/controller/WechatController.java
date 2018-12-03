@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class WechatController {
 
     @Autowired
