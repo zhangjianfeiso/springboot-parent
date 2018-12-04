@@ -1,5 +1,7 @@
 package com.example.wechat.service;
 
+import com.example.wechat.common.vo.UserInfoVo;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -9,4 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 public interface WechatService {
 
     String processRequest(HttpServletRequest request);
+
+    UserInfoVo getOpenid(String code);
 }

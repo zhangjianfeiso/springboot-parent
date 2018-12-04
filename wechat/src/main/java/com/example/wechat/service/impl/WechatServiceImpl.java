@@ -1,10 +1,14 @@
 package com.example.wechat.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
+import com.example.wechat.api.AuthorizeApi;
 import com.example.wechat.api.WechatUserApi;
 import com.example.wechat.common.bean.ArticleItem;
+import com.example.wechat.common.bean.AuthorizeAccessToken;
 import com.example.wechat.common.bean.UserInfo;
 import com.example.wechat.common.bean.WechatContant;
 import com.example.wechat.common.utils.WechatUtil;
+import com.example.wechat.common.vo.UserInfoVo;
 import com.example.wechat.service.WechatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +27,8 @@ public class WechatServiceImpl implements WechatService {
 
     @Autowired
     private WechatUserApi wechatUserApi;
+    @Autowired
+    private AuthorizeApi authorizeApi;
 
 
     public String processRequest(HttpServletRequest request) {
@@ -182,5 +188,14 @@ public class WechatServiceImpl implements WechatService {
         }
         return "";
 
+    }
+
+    @Override
+    public UserInfoVo getOpenid(String code) {
+        AuthorizeAccessToken accessToken = authorizeApi.getAccessToken(code);
+        UserInfo userInfo = authorizeApi.getUserInfo(accessToken.getAccess_token(), accessToken.getOpenid());
+        UserInfoVo userInfoVo = new UserInfoVo();
+        BeanUtil.copyProperties(userInfo,userInfoVo);
+        return userInfoVo;
     }
 }
