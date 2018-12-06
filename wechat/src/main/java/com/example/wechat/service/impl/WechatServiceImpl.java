@@ -196,7 +196,7 @@ public class WechatServiceImpl implements WechatService {
         AuthorizeAccessToken accessToken = authorizeApi.getAccessToken(code);
         UserInfo userInfo = authorizeApi.getUserInfo(accessToken.getAccess_token(), accessToken.getOpenid());
         UserInfoVo userInfoVo = new UserInfoVo();
-        userInfoVo.setOpenid(userInfo.getOpenid());
+        userInfoVo.setOpenid(accessToken.getOpenid());
         userInfoVo.setNickname(userInfo.getNickname());
 
         //获取用户身份
