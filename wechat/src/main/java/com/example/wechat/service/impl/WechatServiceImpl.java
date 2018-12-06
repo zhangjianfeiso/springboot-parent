@@ -1,6 +1,7 @@
 package com.example.wechat.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.RandomUtil;
 import com.example.wechat.api.AuthorizeApi;
 import com.example.wechat.api.WechatUserApi;
 import com.example.wechat.common.bean.ArticleItem;
@@ -195,7 +196,13 @@ public class WechatServiceImpl implements WechatService {
         AuthorizeAccessToken accessToken = authorizeApi.getAccessToken(code);
         UserInfo userInfo = authorizeApi.getUserInfo(accessToken.getAccess_token(), accessToken.getOpenid());
         UserInfoVo userInfoVo = new UserInfoVo();
-        BeanUtil.copyProperties(userInfo,userInfoVo);
+        userInfoVo.setOpenid(userInfo.getOpenid());
+        userInfoVo.setNickname(userInfo.getNickname());
+
+        //获取用户身份
+        int random = RandomUtil.randomInt(1, 3);
+        userInfoVo.setIdentity(random);
+        System.out.println(userInfoVo);
         return userInfoVo;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.wechat;
 
 
+import cn.hutool.core.util.RandomUtil;
 import com.example.wechat.api.WechatUserApi;
 import com.example.wechat.common.bean.*;
 import com.example.wechat.common.utils.AccessTokenUtil;
@@ -32,7 +33,9 @@ public class WechatApplicationTests {
 
 	@Test
 	public void getUserInfo(){
-		UserInfo wechatUserInfo = wechatUserApi.getWechatUserInfo("ogk2v0ejj-V9o-y8wp4PutGy7UeI");
+		//oCndhs9K4U34AGGrTqWRr4LHGEAs
+		//oyhsn0nE-uDb3Alt-1XjuaeWvCrA
+		UserInfo wechatUserInfo = wechatUserApi.getWechatUserInfo("oyhsn0nE-uDb3Alt-1XjuaeWvCrA");
 		System.out.println(wechatUserInfo);
 	}
 
@@ -52,5 +55,6 @@ public class WechatApplicationTests {
 		AccessToken accessToken = accessTokenUtil.getAccessToken();
 		System.out.println(accessToken);
 	}
+
 
 }

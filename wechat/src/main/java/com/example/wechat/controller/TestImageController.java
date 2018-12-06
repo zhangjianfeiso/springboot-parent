@@ -26,8 +26,8 @@ public class TestImageController {
     public void download(HttpServletRequest request, HttpServletResponse response) {
         ThreadUtil.sleep(2000);
 
-        File file = new File("C:\\Users\\ZHANG_JIAN_FEI\\Desktop\\timg.jpg");
-        //File file = new File("C:\\Users\\DELL\\Desktop\\images\\8575840_114126243000_2.jpg");
+        //File file = new File("C:\\Users\\ZHANG_JIAN_FEI\\Desktop\\timg.jpg");
+        File file = new File("C:\\Users\\DELL\\Desktop\\images\\8575840_114126243000_2.jpg");
         if (FileUtil.isFile(file) && FileUtil.exist(file)) {
             response.setHeader("content-type", "application/octet-stream");
             response.setContentType("image/jpeg");
