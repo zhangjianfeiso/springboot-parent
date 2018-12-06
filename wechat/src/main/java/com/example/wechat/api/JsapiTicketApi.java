@@ -6,11 +6,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.wechat.common.bean.Constant;
 import com.example.wechat.common.bean.JsapiTicket;
 import com.example.wechat.common.bean.RequestCode;
+import com.example.wechat.common.utils.AccessTokenUtil;
 import com.example.wechat.common.utils.RedisUtil;
 import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
@@ -25,6 +27,8 @@ public class JsapiTicketApi {
     private static final String JSAPI_TICKET_URL = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token={}&type=jsapi";
     @Autowired
     private RedisUtil redisUtil;
+    @Autowired
+    private AccessTokenUtil accessTokenUtil;
 
 
     public synchronized JsapiTicket getJsapiTicket(String accessToken){
@@ -50,5 +54,12 @@ public class JsapiTicketApi {
             log.error("生成jsapi_ticket失败！{}",e.getMessage());
         }
         return null;
+    }
+
+    @Scheduled(fixedDelay = 6200 * 1000)
+    private void init(){
+        log.info("定时执行：获取access_token");
+        generate(accessTokenUtil.getAccessToken().getAccess_token());
+        log.info("执行定时完成：");
     }
 }

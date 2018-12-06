@@ -201,6 +201,7 @@ public class WechatServiceImpl implements WechatService {
 
         //获取用户身份
         int random = RandomUtil.randomInt(1, 3);
+        random = 2;
         userInfoVo.setIdentity(random);
         System.out.println(userInfoVo);
         return userInfoVo;

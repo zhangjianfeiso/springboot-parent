@@ -54,10 +54,10 @@ public class AccessTokenUtil {
         return null;
     }
 
-    @Scheduled(fixedDelay = 7000 * 1000)
+    @Scheduled(fixedDelay = 6000 * 1000)
     private void init(){
         log.info("定时执行：获取access_token");
-       // generate();
+        generate();
         log.info("执行定时完成：");
     }
 }
