@@ -99,7 +99,7 @@
 		<dependency>
 			<groupId>cn.hutool</groupId>
 			<artifactId>hutool-all</artifactId>
-			<version>4.1.8</version>
+			<version>4.1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>dom4j</groupId>
@@ -114,15 +114,6 @@
 		</dependency>
 
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 
 	<modules>
