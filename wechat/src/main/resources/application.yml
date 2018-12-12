@@ -1,5 +1,5 @@
 server:
-  port: 8555
+  port: 8080
 
 wechat:
   ip: http://zhangjf.iask.in:11710
