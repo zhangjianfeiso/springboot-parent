@@ -1,15 +1,12 @@
 package com.example.wechat.controller;
 
-import cn.hutool.core.lang.ObjectId;
 import com.example.common.bean.Response;
 import com.example.wechat.common.bean.WechatProperties;
 import com.example.wechat.common.utils.WechatUtil;
-import com.example.wechat.common.vo.UserInfoVo;
 import com.example.wechat.service.WechatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 
 /**
